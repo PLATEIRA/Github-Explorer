@@ -1,5 +1,5 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+//const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const isDevelopment = process.env.MODE_ENV !== 'production';
 
@@ -22,9 +22,9 @@ module: {
             use: 'babel-loader',
         },
         {
-            test:/\.css$/,
+            test:/\.scss$/,
             exclude: /node_modiles/,
-            use: ['style-loader', 'css-loader'],
+            use: ['style-loader', 'css-loader', 'sass-loader'],
         }
     ],
 }
