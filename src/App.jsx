@@ -1,3 +1,3 @@
 export function App(){
-    return <h1>Hi</h1>
+    throw new Error('eita');
 }
