@@ -20,6 +20,11 @@ module: {
             test:/\.jsx$/,
             exclude: /node_modiles/,
             use: 'babel-loader',
+        },
+        {
+            test:/\.css$/,
+            exclude: /node_modiles/,
+            use: ['style-loader', 'css-loader'],
         }
     ],
 }
