@@ -1,5 +1,6 @@
 const path = require('path')
 //const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ReactRfleshWebpackPlugin = required('@pmmmwh/react-refresh-webpack-plugin')
 
 const isDevelopment = process.env.MODE_ENV !== 'production';
 
@@ -14,6 +15,17 @@ module.exports = {
     resolve: {
         extensions: ['.js','.jsx'],
     },
+    devServer: {
+        contentBase: path.resolve(__dirname, 'public'),
+        hot: true,
+    },
+    plugin: [
+        isDevelopment  && new ReactRfleshWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'public', 'index.html')
+        })
+    ].filter(Boolean),
+
 module: {
     rules: [
         {
