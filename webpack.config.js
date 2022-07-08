@@ -1,6 +1,6 @@
 const path = require('path')
-//const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ReactRfleshWebpackPlugin = required('@pmmmwh/react-refresh-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ReactRfleshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 const isDevelopment = process.env.MODE_ENV !== 'production';
 
@@ -31,8 +31,16 @@ module: {
         {
             test:/\.jsx$/,
             exclude: /node_modiles/,
-            use: 'babel-loader',
-        },
+            use: {
+                loader: 'babel-loader',
+                option: [
+                    isDevelopment && require.resolve('react-reflesh/babel')
+                ].filter(Boolean)
+              }
+            },
+        
+
+
         {
             test:/\.scss$/,
             exclude: /node_modiles/,
